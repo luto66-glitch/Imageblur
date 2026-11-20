@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Studio AI - Generador de Imágenes</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Studio AI</h1>
+    <button id="installBtn" class="btn-secondary hidden">Instalar App</button>
+  </header>
+
+  <main class="container">
+    <form id="generateForm" class="card">
+      <div class="form-group">
+        <label for="apiEndpoint">Endpoint API / Backend</label>
+        <input 
+          type="url" 
+          id="apiEndpoint" 
+          placeholder="https://tu-backend.com/api/generate" 
+          required 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="prompt">Prompt (Descripción de la imagen)</label>
+        <textarea 
+          id="prompt" 
+          rows="3" 
+          placeholder="Ej: Un paisaje futurista nocturno, iluminación cinematográfica, 8k..." 
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="negativePrompt">Prompt Negativo (Opcional)</label>
+        <input 
+          type="text" 
+          id="negativePrompt" 
+          placeholder="Ej: borroso, baja calidad, deformado, marca de agua" 
+        />
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="aspectRatio">Relación de aspecto</label>
+          <select id="aspectRatio">
+            <option value="1024x1024">1:1 (1024x1024)</option>
+            <option value="832x1216">2:3 Vertical (832x1216)</option>
+            <option value="1216x832">3:2 Horizontal (1216x832)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="steps">Pasos (Steps): <span id="stepsValue">25</span></label>
+          <input type="range" id="steps" min="10" max="50" value="25" />
+        </div>
+      </div>
+
+      <button type="submit" id="submitBtn" class="btn-primary">
+        Generar Imagen
+      </button>
+    </form>
+
+    <section id="resultSection" class="card result-card hidden">
+      <div id="loader" class="loader hidden">Generando imagen...</div>
+      <div id="errorBox" class="error-box hidden"></div>
+      
+      <div id="imageWrapper" class="image-wrapper hidden">
+        <img id="outputImage" src="" alt="Imagen generada por IA" />
+        <div class="actions">
+          <a id="downloadBtn" href="#" download="imagen-ia.png" class="btn-secondary">
+            Descargar PNG
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

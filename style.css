@@ -1,0 +1,146 @@
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --border: #334155;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding-bottom: 2rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  font-size: 1.25rem;
+}
+
+.container {
+  max-width: 680px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="url"],
+textarea,
+select {
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--primary);
+  border-color: transparent;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 520px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  text-align: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+}
+
+.btn-primary:hover { background-color: var(--primary-hover); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-secondary {
+  background-color: var(--border);
+  color: var(--text);
+}
+
+.result-card { text-align: center; }
+
+.image-wrapper img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.error-box {
+  background-color: rgba(239, 68, 68, 0.15);
+  border: 1px solid #ef4444;
+  color: #fca5a5;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.loader {
+  padding: 2rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.hidden { display: none !important; }
